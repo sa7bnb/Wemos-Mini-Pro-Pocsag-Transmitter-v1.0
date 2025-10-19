@@ -2,6 +2,10 @@
 
 A RadioLib-based POCSAG transmitter implementation for the CC1101 radio module with configurable frequency offset capability.
 
+**Author**: Anders Isaksson (SA7BNB)  
+**Hardware Design**: Anders Isaksson  
+**Software Development**: Anders Isaksson (based on RadioLib)
+
 ## Overview
 
 This project enables transmission of POCSAG (Post Office Code Standardisation Advisory Group) pager messages using a CC1101 radio transceiver module connected to a Wemos D1 Mini Pro. The implementation includes a frequency offset feature for precise frequency calibration.
@@ -26,6 +30,16 @@ This project enables transmission of POCSAG (Post Office Code Standardisation Ad
 | VCC        | 3.3V                 |
 | GND        | GND                  |
 
+**LED:** Connect to GPIO 5 (optional)
+
+## Features
+
+- **Interactive Serial Interface**: Send messages via serial monitor with real-time input
+- **Flexible Message Format**: Support for both default and custom RIC (Radio Identity Code) addressing
+- **Frequency Offset Calibration**: Adjustable frequency offset for precise tuning
+- **Maximum Power Output**: Configured for +10 dBm output power
+- **Visual Feedback**: LED indicator for successful transmissions
+- **Input Validation**: Built-in checks for RIC and message validity
 
 ## Software Requirements
 
@@ -165,6 +179,7 @@ This project is provided as-is for educational purposes. Please check RadioLib's
 
 ## Acknowledgments
 
+- Hardware design and software implementation by **Anders Isaksson (SA7BNB)**
 - Built using the excellent [RadioLib](https://github.com/jgromes/RadioLib) by Jan Gromeš
 - POCSAG protocol implementation by RadioLib contributors
 
