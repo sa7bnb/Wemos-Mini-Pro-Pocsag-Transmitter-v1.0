@@ -1,4 +1,4 @@
-// RadioLib POCSAG Transmitter for CC1101 med frekvens-offset
+// RadioLib POCSAG Transmitter for CC1101 with frequency offset
 #include <RadioLib.h>
 
 // CC1101 connections for Wemos D1 mini Pro
@@ -13,11 +13,11 @@ CC1101 radio = new Module(15, 4, RADIOLIB_NC, 2);
 // LED pin
 #define LED_PIN 5
 
-// FREKVENS INSTÄLLNINGAR - JUSTERA DESSA
-float BASE_FREQUENCY = 433.92;     // Nominell frekvens (MHz)
-float FREQUENCY_OFFSET = 0.015; // Offset i MHz (15 kHz i ditt fall)
-                                   // Positiv = högre frekvens
-                                   // Negativ = lägre frekvens
+// FREQUENCY SETTINGS - ADJUST THESE
+float BASE_FREQUENCY = 433.92;     // Nominal frequency (MHz)
+float FREQUENCY_OFFSET = 0.015; // Offset in MHz (15 kHz in your case)
+                                   // Positive = higher frequency
+                                   // Negative = lower frequency
 
 // create Pager client instance using the FSK module
 PagerClient pager(&radio);
@@ -29,7 +29,7 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, LOW);
 
-  // Beräkna verklig frekvens
+  // Calculate actual frequency
   float actualFrequency = BASE_FREQUENCY + FREQUENCY_OFFSET;
   
   Serial.printf("Base frequency: %.5f MHz\n", BASE_FREQUENCY);
@@ -48,9 +48,9 @@ void setup() {
     while(true);
   }
 
-  // initialize Pager client med justerad frekvens
+  // initialize Pager client with adjusted frequency
   Serial.print(F("[Pager] Initializing ... "));
-  state = pager.begin(actualFrequency, 1200);  // Använd justerad frekvens
+  state = pager.begin(actualFrequency, 1200);  // Use adjusted frequency
   if(state == RADIOLIB_ERR_NONE) {
     Serial.println(F("success!"));
     
